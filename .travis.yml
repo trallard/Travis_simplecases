@@ -2,7 +2,7 @@ language: python
 
 
 before-script: bash script s/gh_conf.sh
-script: bash scripts/deploy_ghpages.sh
+script: bash scripts/build_master.sh
 branches:
   only:
   - master
