@@ -1,6 +1,6 @@
 language: python
 
-script: bash scripts/deploy.sh
+script: bash scripts/deploy_ghpages.sh
 
 branches:
   only:
