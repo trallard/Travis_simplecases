@@ -18,8 +18,10 @@ fi
 REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 ORIGIN_URL=`git config --get remote.origin.url`
-URL_REPO=${ORIGIN_URL/\/\/github.com/\/\/$GITHUB_TOKEN@github.com}
+URL_REPO=${ORIGIN_URL/\/\/github.com/\/\/$GIT_TOKEN@github.com}
 SHA=`git rev-parse --verify HEAD`
+
+echo "Origin: $ORIGIN_URL"
 
 GH_USER_NAME='trallard'
 GH_USER_EMAIL='t.allard@sheffield.ac.uk'
