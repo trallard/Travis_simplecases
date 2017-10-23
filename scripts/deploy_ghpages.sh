@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
-echo "********** Starting build  ********** \n"
-echo "********** Target branch: gh-pages branch ********** \n"
+echo "********** Starting build  ********** "
+echo "********** Target branch: gh-pages branch ********** "
 
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
@@ -29,11 +29,11 @@ GH_USER_EMAIL='t.allard@sheffield.ac.uk'
 git clone $REPO out
 cd out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-echo " ********** Creating new gh-pages branch ********** \n"
+echo " ********** Creating new gh-pages branch ********** "
 cd ..
 
 # Clean out existing contents
-echo "********** Removing old static content ********** \n"
+echo "********** Removing old static content ********** "
 rm -rf out/**/* || exit 0
 
 # Run our compile script
@@ -46,12 +46,12 @@ git config user.email "$GH_USER_EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
 if git diff --quiet; then
-    echo "No changes to the output on this push; exiting."
+    echo "**********  No changes to the output on this push; exiting. ********** "
     exit 0
 fi
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
 git add -A .
-git commit -m "Deploy to GitHub Pages: from current commit ${SHA}"
+git commit -m "**********  Deploy to GitHub Pages: from current commit ${SHA} ********** "
 git push --quiet $URL_REPO $TRAVIS_BRANCH
