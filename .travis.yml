@@ -1,5 +1,5 @@
 language: python
-script: bash scripts/deploy_ghpages.sh
+script: bash scripts/gh_config.sh
 branches:
   only:
   - master
