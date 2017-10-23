@@ -1,10 +1,7 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
 echo "********** Starting build  ********** "
-echo "********** Target branch: gh-pages branch ********** "
-
-SOURCE_BRANCH="master"
-TARGET_BRANCH="gh-pages"
+echo "********** Target branch: $TARGET_BRANCH ********** "
 
 # This script only builds when commits are made to the gh-pages branch
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -13,17 +10,6 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]
     exit 0
 fi
 
-
-# GitHub confing: saving this for later
-REPO=`git config remote.origin.url`
-SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-ORIGIN_URL=`git config --get remote.origin.url`
-URL_REPO=${ORIGIN_URL/\/\/github.com/\/\/$GIT_TOKEN@github.com}
-SHA=`git rev-parse --verify HEAD`
-
-
-GH_USER_NAME='trallard'
-GH_USER_EMAIL='t.allard@sheffield.ac.uk'
 
 # Clone the existing gh-pages for this repo into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deploy)
@@ -55,4 +41,4 @@ fi
 # The delta will show diffs between new and old versions.
 git add -A .
 git commit -m "**********  Deploy to GitHub Pages: from current commit ${SHA} ********** "
-git push --quiet $URL_REPO $TRAVIS_BRANCH
+git push --quiet $REPO_URL $TARGET_BRANCH

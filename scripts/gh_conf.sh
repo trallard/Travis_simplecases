@@ -12,6 +12,9 @@ git config --global user.name "$GH_USER_EMAIL"
 
 # GitHub confing: saving this for later
 ORIGIN_URL=`git config --get remote.origin.url`
-REPO_URL=${ORIGIN_URL/\/\/github.com/\/\/$GITHUB_TOKEN@github.com}
+REPO_URL=${ORIGIN_URL/\/\/github.com/\/\/$GIT_TOKEN@github.com}
 
-echo "$REPO_URL"
+echo "$ORIGIN_URL"
+
+
+SHA=`git rev-parse --verify HEAD`
