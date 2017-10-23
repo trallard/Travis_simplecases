@@ -5,7 +5,7 @@ echo "********** Target branch: $TARGET_BRANCH ********** "
 
 # This script only builds when commits are made to the master branch
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_BRANCH" = "$SOURCE_BRANCH" ]; then
+if [ "$TRAVIS_BRANCH" = "master" ]; then
     echo "Building on master"
     echo "$TRAVIS_BRANCH"
     exit 0
