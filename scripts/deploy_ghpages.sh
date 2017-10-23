@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
-echo "Starting build"
-echo "Target branch: gh-pages branch"
+echo "********** Starting build  ********** \n"
+echo "********** Target branch: gh-pages branch ********** \n"
 
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
@@ -17,7 +17,8 @@ fi
 # GitHub confing: saving this for later
 REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-URL_repo=${ORIGIN_URL/\/\/github.com/\/\/$GITHUB_TOKEN@github.com}
+ORIGIN_URL=`git config --get remote.origin.url`
+URL_REPO=${ORIGIN_URL/\/\/github.com/\/\/$GITHUB_TOKEN@github.com}
 SHA=`git rev-parse --verify HEAD`
 
 GH_USER_NAME='trallard'
@@ -28,11 +29,11 @@ GH_USER_EMAIL='t.allard@sheffield.ac.uk'
 git clone $REPO out
 cd out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-echo "Creating new gh-pages branch"
+echo " ********** Creating new gh-pages branch ********** \n"
 cd ..
 
 # Clean out existing contents
-echo "Removing old static content"
+echo "********** Removing old static content ********** \n"
 rm -rf out/**/* || exit 0
 
 # Run our compile script
@@ -40,7 +41,7 @@ rm -rf out/**/* || exit 0
 
 # Now let's go have some fun with the cloned repo
 cd out
-git config user.name "Travis CI"
+git config user.name "$GH_USER_NAME"
 git config user.email "$GH_USER_EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
@@ -53,4 +54,4 @@ fi
 # The delta will show diffs between new and old versions.
 git add -A .
 git commit -m "Deploy to GitHub Pages: from current commit ${SHA}"
-git push --quiet $URL_repo $TRAVIS_BRANCH
+git push --quiet $URL_REPO $TRAVIS_BRANCH
