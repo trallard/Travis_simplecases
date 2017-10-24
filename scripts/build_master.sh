@@ -17,6 +17,9 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != $SOURCE_BRANCH ]; 
 fi
 
 
+# Identifying the commit
+SHA=`git rev-parse --verify HEAD`
+
 # Function used to pull all the branches
 function create_branches()
 {
@@ -49,9 +52,13 @@ create_branches
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 echo " ********** Creating new gh-pages branch ********** "
 
+# Merging the source into the target branch
+echo "Merging changes"
+git merge $SOURCE_BRANCH
+
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
 git add -A .
-git commit -m "**********  Deploy to GitHub Pages: from current commit ${SHA} ********** "
+git commit -m "**********  Merging $SOURCE_BRANCH into $TARGET_BRANCH ${SHA} ********** "
 git push --quiet $REPO_URL $TARGET_BRANCH
