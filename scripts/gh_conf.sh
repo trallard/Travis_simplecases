@@ -1,6 +1,3 @@
-SOURCE_BRANCH="master"
-TARGET_BRANCH="gh-pages"
-
 GH_USER_NAME='trallard'
 GH_USER_EMAIL='t.allard@sheffield.ac.uk'
 

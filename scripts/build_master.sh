@@ -1,5 +1,10 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
+
+# Since we are building on master we have to define this
+SOURCE_BRANCH="master"
+TARGET_BRANCH="gh-pages"
+
 echo "********** Starting build  ********** "
 echo "********** Target branch: $TARGET_BRANCH ********** "
 
