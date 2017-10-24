@@ -76,9 +76,10 @@ git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 echo " ********** Creating new $TARGET_BRANCH branch ********** "
 
 # Merging the source into the target branch
-echo "**********  Merging $SOURCE_BRANCH into $TARGET_BRANCH ${SHA} ********** "
+echo "**********  Merging $SOURCE_BRANCH into $TARGET_BRANCH SHA:${SHA} ********** "
 git merge $SOURCE_BRANCH
 
 
 # Push
 git push --quiet $REPO_URL $TARGET_BRANCH
+echo "********** Pushing to the repository **********"
