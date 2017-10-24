@@ -8,11 +8,15 @@ TARGET_BRANCH="gh-pages"
 echo "********** Starting build  ********** "
 echo "********** Target branch: $TARGET_BRANCH ********** "
 
+# function doCompile{
+#   ./compile.sh
+# }
+
 # This script only builds when commits are made to the master branch
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
-if [ "$TRAVIS_BRANCH" = "master" ]; then
-    echo "Building on master"
-    echo "$TRAVIS_BRANCH"
+if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != $SOURCE_BRANCH ]; then
+    echo "Building on $SOURCE_BRANCH"
+    # doCompile
     exit 0
 fi
 
@@ -31,6 +35,9 @@ rm -rf out/**/* || exit 0
 
 # Run our compile script
 # doCompile
+
+# Merge master into gh-pages
+git merge master
 
 # Now let's go have some fun with the cloned repo
 cd out
