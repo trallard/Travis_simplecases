@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
 
+# Check that the login details are passed
+if [ ! -n $2 ] ; then
+    echo "Usage: build_master.sh <username> <password>"
+    exit 1;
+fi
+
+GH_USER_NAME="$1"
+GIT_PASS="$2"
+
 # Since we are building on master we have to define this
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
@@ -8,18 +17,17 @@ TARGET_BRANCH="gh-pages"
 echo "********** Starting build  ********** "
 echo "********** Target branch: $TARGET_BRANCH ********** "
 
-GH_USER_NAME='trallard'
+
+# Configuring git
 GH_USER_EMAIL='t.allard@sheffield.ac.uk'
 
-
-# configureing git
 git config --global user.email "$GH_USER_EMAIL"
-git config --global user.name "$GH_USER_EMAIL"
+git config --global user.name "$GH_USER_NAME"
 
 
 # GitHub confing: saving this for later
 ORIGIN_URL=`git config --get remote.origin.url`
-REPO_URL=${ORIGIN_URL/\/\/github.com/\/\/$GIT_TOKEN@github.com}
+REPO_URL=${ORIGIN_URL/\/\/github.com/\/\/$GH_TOKEN@github.com}
 
 echo "$ORIGIN_URL"
 
@@ -73,4 +81,4 @@ git merge $SOURCE_BRANCH
 
 
 # Push
-git push --quiet $REPO_URL
+git push --quiet $REPO_URL $TARGET_BRANCH
