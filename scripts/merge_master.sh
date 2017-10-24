@@ -1,15 +1,6 @@
 #!/bin/bash
 set -e # Exit with nonzero exit code if anything fails
 
-# Check that the login details are passed
-if [ ! -n $2 ] ; then
-    echo "Usage: build_master.sh <username> <password>"
-    exit 1;
-fi
-
-GH_USER_NAME=${GH_USER}
-GH_TOKEN=${GH_TOKEN}
-
 # Since we are building on master we have to define this
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
@@ -22,7 +13,7 @@ echo "********** Target branch: $TARGET_BRANCH ********** "
 GH_USER_EMAIL='t.allard@sheffield.ac.uk'
 
 git config --global user.email "$GH_USER_EMAIL"
-git config --global user.name "$GH_USER_NAME"
+git config --global user.name "$GH_USER"
 
 
 # GitHub confing: saving this for later
