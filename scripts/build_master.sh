@@ -50,15 +50,12 @@ create_branches
 
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deploy)
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-echo " ********** Creating new gh-pages branch ********** "
+echo " ********** Creating new $TARGET_BRANCH branch ********** "
 
 # Merging the source into the target branch
-echo "Merging changes"
+echo "**********  Merging $SOURCE_BRANCH into $TARGET_BRANCH ${SHA} ********** "
 git merge $SOURCE_BRANCH
 
 
-# Commit the "changes", i.e. the new version.
-# The delta will show diffs between new and old versions.
-git add -A .
-git commit -m "**********  Merging $SOURCE_BRANCH into $TARGET_BRANCH ${SHA} ********** "
-git push --quiet $REPO_URL $TARGET_BRANCH
+# Push
+git push --quiet $REPO_URL 
