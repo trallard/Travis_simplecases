@@ -8,6 +8,21 @@ TARGET_BRANCH="gh-pages"
 echo "********** Starting build  ********** "
 echo "********** Target branch: $TARGET_BRANCH ********** "
 
+GH_USER_NAME='trallard'
+GH_USER_EMAIL='t.allard@sheffield.ac.uk'
+
+
+# configureing git
+git config --global user.email "$GH_USER_EMAIL"
+git config --global user.name "$GH_USER_EMAIL"
+
+
+# GitHub confing: saving this for later
+ORIGIN_URL=`git config --get remote.origin.url`
+REPO_URL=${ORIGIN_URL/\/\/github.com/\/\/$GIT_TOKEN@github.com}
+
+echo "$ORIGIN_URL"
+
 
 # This script only builds when commits are made to the master branch
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -58,4 +73,4 @@ git merge $SOURCE_BRANCH
 
 
 # Push
-git push --quiet $REPO_URL 
+git push --quiet $REPO_URL
