@@ -8,7 +8,7 @@ if [ ! -n $2 ] ; then
 fi
 
 GH_USER_NAME="$1"
-GIT_PASS="$2"
+GH_TOKEN="$2"
 
 # Since we are building on master we have to define this
 SOURCE_BRANCH="master"
@@ -35,7 +35,7 @@ echo "$ORIGIN_URL"
 # This script only builds when commits are made to the master branch
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != $SOURCE_BRANCH ]; then
-    echo "Building on a branch that is not $SOURCE_BRANCH"
+    echo "This is not the $SOURCE_BRANCH branch. No build will be performed"
     exit 0
 fi
 

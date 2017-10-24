@@ -1,6 +1,6 @@
 language: python
 
-script: bash scripts/build_master.sh $GH_USER $GH_TOKEN
+script: bash scripts/auto_merge.sh $GH_USER $GH_TOKEN
 
 branches:
   only:
