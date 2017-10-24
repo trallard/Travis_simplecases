@@ -7,8 +7,8 @@ if [ ! -n $2 ] ; then
     exit 1;
 fi
 
-GH_USER_NAME="$1"
-GH_TOKEN="$2"
+GH_USER_NAME=${GH_USER}
+GH_TOKEN=${GH_TOKEN}
 
 # Since we are building on master we have to define this
 SOURCE_BRANCH="master"

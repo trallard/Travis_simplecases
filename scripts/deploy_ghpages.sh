@@ -1,5 +1,17 @@
-#!/bin/bash
-set -e # Exit with nonzero exit code if anything fails
+#! /bin/bash
+# Merge pushes to development branch to stable branch
+if [ ! -n $2 ] ; then
+    echo "Usage: auto_merge.sh <username> <password>"
+    exit 1;
+fi
+
+GH_USER_NAME="$1"
+GIT_PASS="$2"
+
+# Since we are building on master we have to define this
+SOURCE_BRANCH="master"
+TARGET_BRANCH="gh-pages"
+
 echo "********** Starting build  ********** "
 echo "********** Target branch: $TARGET_BRANCH ********** "
 
@@ -10,6 +22,17 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]
     exit 0
 fi
 
+# Configuring git
+GH_USER_EMAIL='t.allard@sheffield.ac.uk'
+
+git config --global user.email "$GH_USER_EMAIL"
+git config --global user.name "$GH_USER_NAME"
+
+# GitHub confing: saving this for later
+ORIGIN_URL=`git config --get remote.origin.url`
+REPO_URL=${ORIGIN_URL/\/\/github.com/\/\/$GH_TOKEN@github.com}
+
+echo "$ORIGIN_URL"
 
 # Clone the existing gh-pages for this repo into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deploy)
