@@ -30,7 +30,7 @@ echo "$ORIGIN_URL"
 if [ "$TRAVIS_BRANCH" = $SOURCE_BRANCH ]; then
     echo "You are working on the master branch"
     # Run script for master branch
-    bash ./master_run.sh
+    bash scripts/master_run.sh
 else
    echo "You are running on $TRAVIS_BRANCH"
 fi
