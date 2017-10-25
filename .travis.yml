@@ -1,6 +1,6 @@
 language: python
 
-script: bash scripts/merge_master.sh
+script: bash scripts/check_branch.sh
 
 branches:
   only:

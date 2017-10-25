@@ -1,12 +1,5 @@
 #! /bin/bash
-# Merge pushes to development branch to stable branch
-if [ ! -n $2 ] ; then
-    echo "Usage: auto_merge.sh <username> <password>"
-    exit 1;
-fi
-
-GH_USER_NAME="$1"
-GIT_PASS="$2"
+set -e # Exit with nonzero exit code if anything fails
 
 # Since we are building on master we have to define this
 SOURCE_BRANCH="master"
@@ -26,7 +19,7 @@ fi
 GH_USER_EMAIL='t.allard@sheffield.ac.uk'
 
 git config --global user.email "$GH_USER_EMAIL"
-git config --global user.name "$GH_USER_NAME"
+git config --global user.name "$GH_USER"
 
 # GitHub confing: saving this for later
 ORIGIN_URL=`git config --get remote.origin.url`
@@ -51,7 +44,7 @@ rm -rf out/**/* || exit 0
 
 # Now let's go have some fun with the cloned repo
 cd out
-git config user.name "$GH_USER_NAME"
+git config user.name "$GH_USER"
 git config user.email "$GH_USER_EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
