@@ -9,17 +9,11 @@ if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
 else
     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
 fi
-bash miniconda.sh -b -p $HOME/miniconda
-export PATH="$HOME/miniconda/bin:$PATH"
-hash -r
-conda config --set always_yes yes --set changeps1 no
-conda update -q conda
+
+chmod +x miniconda.sh
+./miniconda.sh -b
+export PATH=/home/travis/miniconda/bin:$PATH
+conda update --yes conda
 
 # Useful for debugging any issues with conda
 conda info -a
-
-# creating the conda environment
-conda create -f env scripts/notebooks.yml
-
-# activating the environment
-source activate notebooks
