@@ -7,6 +7,8 @@ install: get_conda.sh
 
 script: bash scripts/check_branch.sh
 
+after_success: source deactivate
+
 branches:
   only:
   - master
