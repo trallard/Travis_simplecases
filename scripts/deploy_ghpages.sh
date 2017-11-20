@@ -1,7 +1,7 @@
 #! /bin/bash
 set -e # Exit with nonzero exit code if anything fails
 
-# Since we are building on master we have to define this
+# Since we are building on master  and deploying in gh-pages:
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 

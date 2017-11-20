@@ -17,3 +17,9 @@ conda update -q conda
 
 # Useful for debugging any issues with conda
 conda info -a
+
+# creating the conda environment
+conda create -f env scripts/otebooks.yml
+
+# activating the environment
+source activate notebooks
