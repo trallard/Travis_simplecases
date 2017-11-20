@@ -7,7 +7,8 @@ Scripts used to deploy and build on Travis
 - [gh_config.sh](./scripts/gh_config.sh): configure the GH repository
 - [merge_master.sh](./scripts/merge_master.sh): will clone master into the g-pages branch
 - [auto_merge.sh](./scripts/auto_merge.sh): will merge a given branch into another
-
+- [get_conda.sh](./scripts/get_conda.sh): script used to get miniconda
+- [check branch.sh](./scripts/check_branch.sh): very basic script used to check which branch is the commit/PR being made to
 
 
 ## Authentication

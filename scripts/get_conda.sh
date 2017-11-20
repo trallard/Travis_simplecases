@@ -19,7 +19,7 @@ conda update -q conda
 conda info -a
 
 # creating the conda environment
-conda create -f env scripts/otebooks.yml
+conda create -f env scripts/notebooks.yml
 
 # activating the environment
 source activate notebooks
