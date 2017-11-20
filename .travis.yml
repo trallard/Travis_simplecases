@@ -3,7 +3,10 @@ language: python
 python:
   - "3.6"
 
-install: bash scripts/get_conda.sh
+install:
+  - bash scripts/get_conda.sh
+  - conda create -f env scripts/notebooks.yml
+  - source activate notebooks
 
 script: bash scripts/check_branch.sh
 
