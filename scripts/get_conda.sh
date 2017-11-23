@@ -4,11 +4,7 @@
 sudo apt-get update
 # We do this conditionally because it saves us some downloading if the
 # version is the same.
-if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-    wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-else
-    wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
-fi
+wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
 
 chmod +x miniconda.sh
 ./miniconda.sh -b

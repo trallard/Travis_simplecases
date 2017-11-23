@@ -3,7 +3,10 @@ language: ruby
 rvm:
   - 2.4.1
 
-before_install:
+before install:
+  - bash scripts/get_conda.sh
+  - conda create -f env scripts/notebooks.yml
+  - source activate notebooks
 
 before_script:
 
@@ -11,7 +14,7 @@ before_script:
 # the `install` step will run `bundle install` by default.
 script: bash scripts/check_branch.sh
 
-after_sucess:
+after_sucess: source deactivate
 
 # Only CI on backend branch
 branches:
