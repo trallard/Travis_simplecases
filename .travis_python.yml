@@ -1,31 +1,19 @@
-language: ruby
+language: python
+python:
+  - "3.6"
 
-rvm:
-  - 2.4.1
+before install:
+  - bash scripts/get_conda.sh
+  - conda create -f env scripts/notebooks.yml
+  - source activate notebooks
 
-before_install:
-
-before_script:
-
-# Assume bundler is being used, therefore
-# the `install` step will run `bundle install` by default.
 script: bash scripts/check_branch.sh
 
-after_sucess:
+after_success: source deactivate
 
-# Only CI on backend branch
 branches:
   only:
-  - master     # if you are serving from master, change this accordingly
-
-env:
-  global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-
-
-sudo: false  # route your build to the container-based infrastructure for a faster build
-
-
+  - master
 env:
   global:
   - secure: fS/enipR3tYVUhJ3Z7awczKp0mVD2DimMKrL8Qu6kUWwOx9op27we4INme6OiyPAh7bfDREzvdkkm+8JQS8YCEy2DoPQPa3nQ1Wl+BJh7coqnsh4MmG1nMUjGOMTjHh0T+bu61t+A/ANByrxqDDip3uJHNN1fxqx+Bmesaybrnj2TevdM0GNxyGOhSYHkInE4u6zm4Gr3t4FoZCd8atWBdTBFJhjOljU1kFL+qqIirDtyMN6o9JhnEYy7V7VXOTYdPrz2aLvmF9h1Dvzfuj/P4PZK7vV2dLWDUCYnW7TQ3dxLO3gyKEcQT1eL5FNAiYXTnbURi7fprTvYZhpYzNcNWmhGzgCzXBmQnxomEbK7OpJmwqlYFONagBB6/D3SHYPLDn2L1Oef2M/HTaYuKURzYorbxdvLbqbMK2jUpJuLWTQ6iFLSVIY5hbYjVkcOYfGOY37G3ZwZ7WqE7gHt4U+wbmGgat5T+iRu9JQ3aD/HbRROe/MolPGsW+ymnbmG3QA+WPT67yCrDLprVcUypgE64z6tC3ilSiNidDjJ7viulv4LsoNT950sF8RUpt5X9IdRjYkfXm40rXh+QFbHc36vCfGhUD3ipp3jFS40ISYqDUMGXh4V/TuD8dE4szfRt1YNkwCA7sy2QZiPu2w2JusBtZHwOhSeSfvW1aY+8gUq2g=
