@@ -4,12 +4,13 @@ rvm:
   - 2.4.1
 
 before install:
+
+before_script:
   - bash scripts/get_conda.sh
   - conda create -f env scripts/notebooks.yml
   - source activate notebooks
-
-before_script:
-
+  - echo python --version
+  
 # Assume bundler is being used, therefore
 # the `install` step will run `bundle install` by default.
 script: bash scripts/check_branch.sh
