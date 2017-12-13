@@ -6,20 +6,12 @@ rvm:
 before install:
 
 before_script:
-  - sudo apt-get update
-  - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
-  - chmod +x miniconda.sh
-  - ./miniconda.sh -b
-  - export PATH=/home/travis/miniconda/bin:$PATH
-  - conda update --yes conda
-  - conda create -f env scripts/conda_notebooks.yml
-  - source activate notebooks
 
 # Assume bundler is being used, therefore
 # the `install` step will run `bundle install` by default.
 script: bash scripts/check_branch.sh
 
-after_sucess: source deactivate
+after_sucess:
 
 # Only CI on backend branch
 branches:
