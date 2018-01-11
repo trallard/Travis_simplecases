@@ -9,6 +9,7 @@ Scripts used to deploy and build on Travis
 - [auto_merge.sh](./scripts/auto_merge.sh): will merge a given branch into another
 - [get_conda.sh](./scripts/get_conda.sh): script used to get miniconda
 - [check branch.sh](./scripts/check_branch.sh): very basic script used to check which branch is the commit/PR being made to
+- [build.sh](./scripts/build.sh): build a jekyll site, accompanied with [.travis.deployGH.yml](./.travis.deployGH.yaml) will build and deploy to the appropriate branch
 
 
 ## Authentication
