@@ -1,5 +1,6 @@
 name: notebooks
 dependencies:
-  - python=3.6
+  - python=$TRAVIS_PYTHON_VERSION
   - pip:
     - nbval
+    - pytest

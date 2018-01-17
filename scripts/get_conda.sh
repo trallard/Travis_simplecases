@@ -7,8 +7,9 @@ sudo apt-get update
 wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
 
 chmod +x miniconda.sh
-./miniconda.sh -b
+./miniconda.sh -b -f -p $MINICONDA
 export PATH=/home/travis/miniconda/bin:$PATH
+conda config --set always_yes yes
 conda update --yes conda
 
 # Useful for debugging any issues with conda
