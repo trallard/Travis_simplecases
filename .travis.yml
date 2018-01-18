@@ -3,12 +3,7 @@ language: python
 python:
   - 3.6
 
-sudo: required #need to use cmake to build pygit2
-
 before_install:
-  # here we get all the pckages we need
-  - sudo apt-get update
-  - sudo apt-get install cmake
   # install conda and create the encironment
   - export MINICONDA=$HOME/miniconda
   - export PATH="$MINICONDA/bin:$PATH"
@@ -21,7 +16,7 @@ before_install:
   - conda env create -f scripts/notebooks.yml -v
   - source activate notebooks
   # via conda
-  - conda install -c conda-forge pygit2 
+  - conda install -c conda-forge pygit2
 
 script:
   - bash scripts/check_branch.sh
