@@ -21,7 +21,7 @@ before_install:
   - conda env create -f scripts/notebooks.yml -v
   - source activate notebooks
   # via conda
-  - conda install -c m-labs pygit2
+  - conda install -c conda-forge pygit2 
 
 script:
   - bash scripts/check_branch.sh
