@@ -3,7 +3,13 @@ language: python
 python:
   - 3.6
 
+sudo: required #need to use cmake to build pygit2
+
 before_install:
+  # here we get all the pckages we need
+  - sudo apt-get update
+  - sudo apt-get install cmake
+  # install conda and create the encironment
   - export MINICONDA=$HOME/miniconda
   - export PATH="$MINICONDA/bin:$PATH"
   - hash -r
