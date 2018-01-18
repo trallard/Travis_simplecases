@@ -20,6 +20,7 @@ before_install:
   - conda info -a
   - conda env create -f scripts/notebooks.yml -v
   - source activate notebooks
+  # via conda
   - conda install -c m-labs pygit2
 
 script:
