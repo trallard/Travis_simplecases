@@ -16,7 +16,7 @@ before_install:
   - source activate notebooks
 
 script:
-  - echo "Conda installed"
+  - bash scripts/check_branch.sh
 
 branches:
   only:
