@@ -1,6 +1,7 @@
 name: notebooks
 dependencies:
-  - python=$TRAVIS_PYTHON_VERSION
+  - python=3.6
   - pip:
     - nbval
     - pytest
+    - venvgit2
