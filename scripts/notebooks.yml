@@ -5,4 +5,4 @@ dependencies:
   - pip
   - pip:
     - nbval
-    - venvgit2
+    #- venvgit2
