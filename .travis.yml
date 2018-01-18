@@ -12,7 +12,7 @@ before_install:
   - conda config --set always_yes yes
   - conda update conda
   - conda info -a
-  - conda env create -f --quiet scripts/notebooks.yml
+  - conda env create -f scripts/notebooks.yml -v
   - source activate notebooks
 
 script:
