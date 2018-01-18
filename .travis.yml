@@ -13,13 +13,10 @@ before_install:
   - conda update conda
   - conda info -a
   - conda env create -f scripts/notebooks.yml
-  - source activate testenv
-  - pip install -i https://pypi.anaconda.org/pypi/simple pygit2
-
+  - source activate notebooks
 
 script:
   - echo "Conda installed"
-
 
 branches:
   only:
