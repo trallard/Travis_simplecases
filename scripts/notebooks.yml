@@ -1,6 +1,6 @@
 name: notebooks
 dependencies:
-  - python=3.6
+  - python=3.5
   - pytest
   - pip
   - pip:
